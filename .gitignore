@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cuda/Machine Learning
+*.log
+.ipynb_checkpoints/
+checkpoint/
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# OS and VS Code
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Data (PENTING: Jangan push dataset besar ke GitHub)
+data/
+*.csv
+*.xlsx
+*.json
