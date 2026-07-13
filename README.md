@@ -1,10 +1,10 @@
-# Indonesian E-Commerce Sentiment Analysis using Multinomial Naive Bayes & SMOTE
+# Indonesian E-Commerce Sentiment Analysis Using Multinomial Naive Bayes and SMOTE Resampling Optimized with n-gram Features and Hyperparameter Tuning
 
-![Python Version](https://img.shields.io/badge/python-3.12-blue?logo=python&logoColor=white)
+![Python Version](https://img.shields.io/badge/python-3.11-blue?logo=python&logoColor=white)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-orange)
 
-This repository contains the source code and data assets for an undergraduate thesis project focused on ordinal classification sentiment analysis (1-5 Star Ratings) of Indonesian e-commerce reviews. The system is heavily optimized to handle severely imbalanced datasets and enhanced using N-Gram feature extraction techniques.
+This repository contains the source code and data assets for an undergraduate thesis project focused on ordinal classification sentiment analysis (1-5 Star Ratings) of Indonesian e-commerce reviews. The system is heavily optimized to handle severely imbalanced datasets and enhanced using n-gram feature extraction techniques.
 
 ## 🚀 Core Features
 * **Comprehensive Text Preprocessing:** Includes noise removal, text cleaning, case folding, slang normalization via a Custom Hybrid Dictionary, and Indonesian stemming using the `Sastrawi` library.
@@ -14,14 +14,12 @@ This repository contains the source code and data assets for an undergraduate th
 
 ## 📁 Repository Structure
 * `data_sample.csv` / `slang_indo.xls`: Main review dataset and the baseline slang dictionary from Kaggle.
-* `notebook_skripsi.ipynb`: The main Jupyter Notebook executing the entire pipeline from Preprocessing to Evaluation.
+* `NB_SentimenAnalysis_Skripsi_2.ipynb`: The main Jupyter Notebook executing the entire pipeline from Preprocessing to Evaluation.
 * `requirements.txt`: Environment manifest tracking precise dependency versions.
-* `*.png`: Exported high-resolution evaluation charts (Ablation Study, Alpha Sensitivity, and Confusion Matrix).
 
 ## 🛠️ Installation & Usage Guide
-This project is built using Python 3.12 and managed via the ultra-fast `uv` package manager.
+This project is built using Python 3.11 and managed via the ultra-fast `uv` package manager.
 
 1. **Clone the Repository:**
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/Skripsi-NaiveBayes.git](https://github.com/YOUR_USERNAME/Skripsi-NaiveBayes.git)
-   cd Skripsi-NaiveBayes
+   git clone https://github.com/erlangga-g/NB_AnalisiSentimen.git
