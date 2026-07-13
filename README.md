@@ -8,7 +8,7 @@ This repository contains the source code and data assets for an undergraduate th
 
 ## 🚀 Core Features
 * **Comprehensive Text Preprocessing:** Includes noise removal, text cleaning, case folding, slang normalization via a Custom Hybrid Dictionary, and Indonesian stemming using the `Sastrawi` library.
-* **Automated N-Gram Tournament:** An automated grid-like evaluation to determine the most predictive feature range (Unigram, Bigram, and Trigram).
+* **Automated n-gram Tournament:** An automated grid-like evaluation to determine the most predictive feature range (Unigram, Bigram, and Trigram).
 * **Strict CV + SMOTE Data Isolation:** Class imbalance resolution via Synthetic Minority Over-sampling Technique (SMOTE), strictly isolated within an `ImbPipeline` to completely prevent any data leakage.
 * **Hyperparameter Tuning:** Systematic optimization of *Laplace/Lidstone Smoothing* ($\alpha$) and class prior probabilities using `GridSearchCV` evaluated across 10-Fold Cross-Validation.
 
