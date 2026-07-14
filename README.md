@@ -23,5 +23,6 @@ This project is built using Python 3.11 and managed within a isolated environmen
 
 1. **Clone the Repository:**
    ```bash
-   git clone [https://github.com/erlangga-g/NB_AnalisiSentimen.git](https://github.com/erlangga-g/NB_AnalisiSentimen.git)
+   git clone https://github.com/erlangga-g/NB_AnalisiSentimen.git
    cd NB_AnalisiSentimen
+   ```
