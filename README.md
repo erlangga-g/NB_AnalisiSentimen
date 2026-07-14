@@ -13,9 +13,9 @@ This repository contains the source code and data assets for an undergraduate th
 * **Hyperparameter Tuning:** Systematic optimization of *Laplace/Lidstone Smoothing* ($\alpha$) and prior fitting configurations using `GridSearchCV` evaluated across Stratified 10-Fold Cross-Validation.
 
 ## 📁 Repository Structure
-* `data_sample.csv`: Main Tokopedia review dataset containing 37,146 clean unique records.
-* `slang_indo.xls` / `kamus_kustom.txt`: Baseline Kaggle dictionary and the locally engineered 116-entry patch dictionary used to form the Hybrid corpus.
-* `NB_SentimentAnalysis_Skripsi_2.ipynb`: The main Jupyter Notebook executing the entire pipeline from Preprocessing to evaluation metrics.
+* `data/raw/data_sample.csv`: Main Tokopedia review dataset containing 37,146 clean unique records.
+* `data/raw/slang_indo.xls` / `kamus_kustom.txt`: Baseline Kaggle dictionary and the locally engineered 116-entry patch dictionary used to form the Hybrid corpus.
+* `notebooks/NB_SentimentAnalysis_Skripsi_2.ipynb`: The main Jupyter Notebook executing the entire pipeline from Preprocessing to evaluation metrics.
 * `requirements.txt`: Environment manifest tracking precise dependency versions for replication.
 
 ## 🛠️ Installation & Usage Guide
