@@ -90,7 +90,7 @@ pipeline_title = tx["title"]
 @st.cache_resource
 def load_assets():
     model = joblib.load("models/model_naive_bayes_skripsi.pkl")
-    slang_dict = joblib.load("resource/kamus_slang_hybrid.pkl")
+    slang_dict = joblib.load("resources/kamus_slang_hybrid.pkl")
     return model, slang_dict
 
 
