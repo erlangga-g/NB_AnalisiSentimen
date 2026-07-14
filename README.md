@@ -4,18 +4,63 @@
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-orange)
 
-
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://nb-analisisentimen-skripsi.streamlit.app/)
 
-🌐 **Live Demo:** https://nb-analisisentimen-skripsi.streamlit.app/
+🌐 **Live Demo:** [Open the Streamlit App](https://nb-analisisentimen-skripsi.streamlit.app/)
 
-This repository contains the source code and supporting data for an undergraduate thesis on **ordinal rating classification (1–5 stars)** of Indonesian e-commerce reviews using Multinomial Naive Bayes. The proposed framework addresses severe class imbalance through SMOTE resampling and incorporates comprehensive NLP preprocessing, n-gram feature extraction, and hyperparameter optimization.
+This repository contains the source code, trained models, and supporting resources developed as part of an undergraduate thesis on **ordinal rating classification (1–5 stars)** of Indonesian e-commerce reviews using Multinomial Naive Bayes. The proposed framework addresses severe class imbalance through SMOTE resampling and incorporates comprehensive NLP preprocessing, n-gram feature extraction, and hyperparameter optimization.
+
+---
+
+## 🌐 Web Application
+
+The project includes an interactive Streamlit web application for predicting **ordinal ratings (1–5 stars)** from Indonesian e-commerce reviews.
+
+### Home Page
+
+<p align="center">
+  <img src="images/streamlit-home.png" width="900" alt="Streamlit Home">
+</p>
+
+---
 
 ## 🚀 Core Features
-* **Comprehensive Text Preprocessing:** Includes noise removal, text cleaning, case folding, tokenization, stopword removal, Indonesian stemming using the `Sastrawi` library, and slang normalization via a Custom Hybrid Dictionary (1,320 entry corpus).
-* **Automated n-gram Tournament:** An automated grid-like evaluation to determine the most predictive feature range (Unigram, Bigram, and Trigram combinations).
-* **Strict CV + SMOTE Data Isolation:** Class imbalance resolution via Synthetic Minority Over-sampling Technique (SMOTE), strictly isolated within an `ImbPipeline` framework to completely prevent any data leakage during validation.
-* **Hyperparameter Tuning:** Systematic optimization of *Laplace/Lidstone Smoothing* ($\alpha$) and prior fitting configurations using `GridSearchCV` evaluated across Stratified 10-Fold Cross-Validation.
+
+- **Comprehensive Text Preprocessing:** Includes noise removal, text cleaning, case folding, tokenization, stopword removal, Indonesian stemming using the `Sastrawi` library, and slang normalization via a Custom Hybrid Dictionary (1,320 entry corpus).
+
+- **Automated N-Gram Evaluation:** An automated evaluation to determine the most predictive feature range (Unigram, Bigram, and Trigram combinations).
+
+- **Strict CV + SMOTE Data Isolation:** Class imbalance is handled using SMOTE inside an `ImbPipeline` to completely prevent data leakage during validation.
+
+- **Hyperparameter Tuning:** Systematic optimization of Laplace/Lidstone smoothing (`α`) and prior fitting using `GridSearchCV` with Stratified 10-Fold Cross Validation.
+
+---
+
+## 📚 Data Sources
+
+This project is built upon publicly available datasets and linguistic resources.
+
+### Tokopedia Product Reviews Dataset
+
+- Source: Farhan
+- Original dataset containing **40,607** Indonesian product reviews collected from Tokopedia.
+- This research uses a cleaned subset consisting of **37,146 unique reviews** after preprocessing and duplicate removal.
+- Dataset: [https://www.kaggle.com/datasets/farhan999/tokopedia-product-reviews]
+
+### Indonesian Slang Dictionary
+
+- Source: sodolanangbjkatio
+- Original public slang dictionary used as the baseline resource.
+- Extended with a manually curated custom dictionary to create the Hybrid Slang Dictionary used throughout this study.
+- Dataset: [https://www.kaggle.com/datasets/sodolanangbjkatio/slang-indonesia]
+
+---
+
+## 🙏 Acknowledgments
+
+Special thanks to the authors of the publicly available Tokopedia Product Reviews dataset and the Indonesian Slang Dictionary on Kaggle. Their work made this research possible.
+
+---
 
 ## 📁 Repository Structure
 
@@ -34,20 +79,22 @@ NB_AnalisiSentimen/
 │   └── NB_SentimentAnalysis_Skripsi_2.ipynb
 ├── requirements.txt
 ├── README.md
-└── .gitignore
+└── LICENSE
 ```
 
 ### Directory Overview
 
 | Directory / File | Description |
 |------------------|-------------|
-| `app.py` | Streamlit web application for interactive sentiment rating prediction. |
+| `app.py` | Streamlit web application for interactive rating prediction. |
 | `data/raw/` | Original Tokopedia review dataset and slang dictionaries. |
 | `data/processed/` | Intermediate datasets generated during preprocessing. |
-| `images/` | Figures and visualizations used in the README and thesis. |
-| `models/` | Serialized NLP resources, including the trained Multinomial Naive Bayes model. |
-| `resources/` | Hybrid slang dictionary and other NLP resources used during preprocessing. |
+| `images/` | Figures and screenshots used in the README and thesis. |
+| `models/` | Serialized trained Multinomial Naive Bayes model. |
+| `resources/` | Hybrid slang dictionary and preprocessing resources. |
 | `notebooks/` | Main Jupyter Notebook containing the complete experimental pipeline. |
+
+---
 
 ## 🛠️ Installation & Usage Guide
 
@@ -60,20 +107,20 @@ git clone https://github.com/erlangga-g/NB_AnalisiSentimen.git
 cd NB_AnalisiSentimen
 ```
 
-### 2. Create and Activate a Minionda Environment
+### 2. Create and Activate a Miniconda Environment
 
 ```bash
 conda create -n Skripsi-NaiveBayes python=3.11
 conda activate Skripsi-NaiveBayes
 ```
 
-### 3. Install Required Packages
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Launch Jupyter Notebook
+### 4. Launch Jupyter
 
 ```bash
 jupyter notebook
@@ -87,7 +134,7 @@ jupyter lab
 
 Open:
 
-```
+```text
 notebooks/NB_SentimentAnalysis_Skripsi_2.ipynb
 ```
 
@@ -97,6 +144,7 @@ Run the notebook sequentially from the first cell to reproduce the complete expe
 >
 > Ensure that the dataset and supporting dictionary files remain in their original locations inside the `data/` directory. The notebook uses relative paths to load these resources.
 
+---
 
 ## 📊 Experimental Pipeline
 
@@ -112,18 +160,41 @@ The complete workflow consists of the following stages:
 8. SMOTE Resampling
 9. Hyperparameter Optimization (GridSearchCV)
 10. Multinomial Naive Bayes Training
-11. Performance Evaluation
+11. Performance Evaluation & Analysis
+
+---
+
+## 📈 Experimental Results
+
+### Streamlit Prediction Example
+
+<p align="center">
+  <img src="images/hasil1-streamlit.png" width="900" alt="TF-IDF (Contribution Value)">
+</p>
+
+<p align="center">
+  <img src="images/hasil2-streamlit.png" width="900" alt="Preprocessing details">
+</p>
+
+### Confusion Matrix
+
+<p align="center">
+  <img src="images/confusion_matrix_comparison_final.png" width="650" alt="Confusion Matrix">
+</p>
+
+### Performance Improvement Across Experimental Scenarios
+
+<p align="center">
+  <img src="images/ablation_study_5_scenarios.png" width="700" alt="Classification Report">
+</p>
+
+---
 
 ## 📈 Evaluation Metrics
 
-Model performance is evaluated using:
+The proposed framework is primarily evaluated using **Macro F1-Score**, supported by additional metrics including Accuracy, Precision, Recall, Confusion Matrix, and Stratified 10-Fold Cross Validation.
 
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- Confusion Matrix
-- Stratified 10-Fold Cross Validation
+---
 
 ## 📚 Main Libraries
 
@@ -134,7 +205,17 @@ Model performance is evaluated using:
 - nltk
 - Sastrawi
 - matplotlib
+- joblib
+- streamlit
+
+---
 
 ## 📄 Citation
 
 Citation information will be added after the undergraduate thesis has been officially completed and published.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
