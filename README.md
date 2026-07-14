@@ -41,7 +41,7 @@ NB_AnalisiSentimen/
 
 | Directory / File | Description |
 |------------------|-------------|
-| `app.py` | Optional web application for model inference. |
+| `app.py` | Streamlit web application for interactive sentiment rating prediction. |
 | `data/raw/` | Original Tokopedia review dataset and slang dictionaries. |
 | `data/processed/` | Intermediate datasets generated during preprocessing. |
 | `images/` | Figures and visualizations used in the README and thesis. |
