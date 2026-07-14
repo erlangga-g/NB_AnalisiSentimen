@@ -19,7 +19,7 @@ This repository contains the source code and data assets for an undergraduate th
 * `requirements.txt`: Environment manifest tracking precise dependency versions for replication.
 
 ## 🛠️ Installation & Usage Guide
-This project is built using Python 3.11 and managed via the ultra-fast `uv` package manager.
+This project is built using Python 3.11 and managed within a isolated environment using **Miniconda**.
 
 1. **Clone the Repository:**
    ```bash
