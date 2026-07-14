@@ -20,8 +20,8 @@ st.set_page_config(
 # ==============================================================================
 @st.cache_resource
 def load_assets():
-    model = joblib.load("model_naive_bayes_skripsi.pkl")
-    slang_dict = joblib.load("kamus_slang_hybrid.pkl")
+    model = joblib.load("models/model_naive_bayes_skripsi.pkl")
+    slang_dict = joblib.load("models/kamus_slang_hybrid.pkl")
     return model, slang_dict
 
 
@@ -49,7 +49,7 @@ def preprocess_text(text, slang_dictionary):
 # ==============================================================================
 st.title("⭐ Analisis Klasifikasi Ordinal Rating E-Commerce")
 st.write(
-    "Prediksi Rating Bintang (1-5) menggunakan **Multinomial Naive Bayes + SMOTE + N-Gram**."
+    "Prediksi Rating Bintang (1-5) menggunakan **Naive Bayes + Slang Normalization + n-gram + SMOTE + Multinomial Naive Bayes**."
 )
 st.markdown("---")
 
