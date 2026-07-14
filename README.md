@@ -45,14 +45,14 @@ This project is built upon publicly available datasets and linguistic resources.
 - Source: Farhan
 - Original dataset containing **40,607** Indonesian product reviews collected from Tokopedia.
 - This research uses a cleaned subset consisting of **37,146 unique reviews** after preprocessing and duplicate removal.
-- Dataset: [https://www.kaggle.com/datasets/farhan999/tokopedia-product-reviews]
+- Dataset: [Tokopedia Product Reviews](https://www.kaggle.com/datasets/farhan999/tokopedia-product-reviews)
 
 ### Indonesian Slang Dictionary
 
 - Source: sodolanangbjkatio
 - Original public slang dictionary used as the baseline resource.
 - Extended with a manually curated custom dictionary to create the Hybrid Slang Dictionary used throughout this study.
-- Dataset: [https://www.kaggle.com/datasets/sodolanangbjkatio/slang-indonesia]
+- Dataset: [Indonesian Slang Dictionary](https://www.kaggle.com/datasets/sodolanangbjkatio/slang-indonesia)
 
 ---
 
