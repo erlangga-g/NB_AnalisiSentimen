@@ -9,7 +9,7 @@ import streamlit as st
 # 1. KONFIGURASI HALAMAN WEBSITE
 # ==============================================================================
 st.set_page_config(
-    page_title="Ordinal Rating Prediction - Naive Bayes & SMOTE",
+    page_title="Ordinal Rating Classification",
     page_icon="⭐",
     layout="centered",
 )
@@ -89,8 +89,8 @@ pipeline_title = tx["title"]
 # ==============================================================================
 @st.cache_resource
 def load_assets():
-    model = joblib.load("models/model_naive_bayes_skripsi.pkl")
-    slang_dict = joblib.load("resources/kamus_slang_hybrid.pkl")
+    model = joblib.load("models/multinomial_nb.pkl")
+    slang_dict = joblib.load("resources/hybrid_slang_dictionary.pkl")
     return model, slang_dict
 
 
