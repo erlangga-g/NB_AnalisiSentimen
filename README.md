@@ -64,8 +64,8 @@ Create an isolated Python environment.
 Example using Miniconda:
 
 ```bash
-conda create -n Skripsi-NaiveBayes python=3.11
-conda activate Skripsi-NaiveBayes
+conda create -n rating-classification python=3.11
+conda activate rating-classification
 ```
 
 Install dependencies.
