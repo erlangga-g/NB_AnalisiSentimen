@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
 ![License](https://img.shields.io/badge/License-MIT-orange)
 
-**Live Demo:** https://nb-analisisentimen-skripsi.streamlit.app/
+**Live Demo:** https://ordinal-rating-classification-naive-bayes.streamlit.app/
 
 This repository contains the implementation of an undergraduate thesis on **ordinal rating classification (1–5 stars)** for Indonesian e-commerce reviews using **Multinomial Naive Bayes**. The proposed framework combines comprehensive NLP preprocessing, TF-IDF with n-gram features, SMOTE resampling, and hyperparameter optimization to improve classification performance on imbalanced data.
 
@@ -83,7 +83,7 @@ jupyter lab
 Open
 
 ```
-notebooks/NB_SentimentAnalysis_Skripsi_2.ipynb
+notebooks/ordinal_rating_classification.ipynb
 ```
 
 ---
