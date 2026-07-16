@@ -17,8 +17,10 @@ st.set_page_config(
 # ==============================================================================
 # 2. SELEKSI BAHASA (BILINGUAL DICTIONARY)
 # ==============================================================================
-# Taruh opsi bahasa di sidebar
-lang = st.sidebar.radio("🌐 Language / Bahasa", ["English", "Indonesia"])
+# Taruh opsi bahasa di sidebar dengan key unik agar tidak duplicate element ID
+lang = st.sidebar.radio(
+    "🌐 Language / Bahasa", ["English", "Indonesia"], key="language_selector"
+)
 
 # Kamus pelokalan teks UI
 text_content = {
@@ -27,7 +29,7 @@ text_content = {
         "subtitle": "Predicting 1–5 Star Ratings using Multinomial Naive Bayes and NLP Techniques.",
         "subheader_input": "📝 Enter Customer Review",
         "label_input": "Write a product review below to predict its rating:",
-        "input_warning": "**Important Note:** This model is trained specifically on Indonesian text. Please input your review in **Bahasa Indonesia**.",
+        "input_warning": "⚠️ **Important Note:** This model is trained specifically on Indonesian text. Please input your review in **Bahasa Indonesia**.",
         "placeholder_input": "Example: kualitas produk sangat baik, pengiriman cepat dan kurir ramah bgt",
         "btn_predict": "Predict Star Rating",
         "warn_empty": "Please enter a review text first!",
@@ -40,8 +42,6 @@ text_content = {
         "info_no_words": "No dominant key terms from the model's vocabulary were detected in this review.",
         "fallback_xai": "*Word contribution visualization is currently unavailable for this prediction.*",
         "chart_title": "**Model Confidence Level for Each Star Rating:**",
-        "chart_x": "Target Rating",
-        "chart_y": "Probability (%)",
         "expander_title": "🛠️ Preprocessing Details",
         "exp_raw": "Original Text",
         "exp_clean": "Normalized & Cleaned Text",
@@ -53,7 +53,7 @@ text_content = {
         "subtitle": "Prediksi Rating Bintang (1–5) menggunakan Multinomial Naive Bayes dan Teknik NLP.",
         "subheader_input": "📝 Masukkan Teks Ulasan",
         "label_input": "Tulis ulasan produk di sini untuk diprediksi ratingnya:",
-        "input_warning": "**Catatan Penting:** Model ini dilatih khusus menggunakan data berbahasa Indonesia. Harap masukkan ulasan dalam **Bahasa Indonesia**.",
+        "input_warning": "⚠️ **Catatan Penting:** Model ini dilatih khusus menggunakan data berbahasa Indonesia. Harap masukkan ulasan dalam **Bahasa Indonesia**.",
         "placeholder_input": "Contoh: kualitas produk sangat baik, pengiriman cepat dan kurir ramah bgt",
         "btn_predict": "Prediksi Rating Bintang",
         "warn_empty": "Mohon masukkan teks ulasan terlebih dahulu!",
@@ -66,8 +66,6 @@ text_content = {
         "info_no_words": "Tidak ada kata kunci dominan dari kosakata kamus model yang terdeteksi di ulasan ini.",
         "fallback_xai": "*Fitur penjelasan kata saat ini hanya mendukung visualisasi probabilitas kelas.*",
         "chart_title": "**Tingkat Keyakinan Model untuk Tiap Rating Bintang:**",
-        "chart_x": "Rating Target",
-        "chart_y": "Probabilitas (%)",
         "expander_title": "🛠️ Detail Preprocessing",
         "exp_raw": "Teks Asli",
         "exp_clean": "Hasil Preprocessing & Normalisasi Slang",
@@ -77,10 +75,6 @@ text_content = {
 }
 
 tx = text_content[lang]
-
-# Ambil bahasa terpilih
-tx = text_content[lang]
-
 pipeline_title = tx["title"]
 
 
@@ -122,7 +116,7 @@ st.markdown("---")
 
 if assets_loaded:
     st.subheader(tx["subheader_input"])
-    # Menampilkan peringatan batasan bahasa model
+    # Menampilkan informasi batasan bahasa model
     st.info(tx["input_warning"])
 
     user_input = st.text_area(
@@ -155,7 +149,7 @@ if assets_loaded:
             with col2:
                 st.subheader(f"{stars_visual}")
 
-            # C. MENJELASKAN ALASAN MODEL (Fitur TF-IDF Terkuat dalam Teks)
+            # C. MENJELASKAN ALASAN MODEL (Bypass Pyarrow menggunakan st.table primitif)
             st.markdown("---")
             st.subheader(tx["header_xai"])
             st.write(tx["desc_xai"])
@@ -176,29 +170,24 @@ if assets_loaded:
                         }
                     ).sort_values(by=tx["col_weight"], ascending=False)
 
-                    st.dataframe(
-                        importance_df, use_container_width=True, hide_index=True
-                    )
+                    # Menggunakan st.table dengan record dict untuk menghindari konversi Pyarrow DataFrame
+                    st.table(importance_df.to_dict(orient="records"))
                 else:
                     st.info(tx["info_no_words"])
             except Exception:
                 st.write(tx["fallback_xai"])
 
-            # Visualisasi Probabilitas Kelas (Keyakinan Model)
+            # D. Visualisasi Probabilitas Kelas (Bypass st.bar_chart dengan st.progress murni python)
+            st.markdown("---")
             st.write(tx["chart_title"])
-            chart_data = pd.DataFrame(
-                {
-                    tx["chart_x"]: [f"Rating {c}" for c in classes],
-                    tx["chart_y"]: [p * 100 for p in proba],
-                }
-            )
-            st.bar_chart(
-                data=chart_data,
-                x=tx["chart_x"],
-                y=tx["chart_y"],
-                horizontal=True,
-            )
 
+            for c, p in zip(classes, proba):
+                percentage = p * 100
+                st.write(f"**Rating {c}** ({percentage:.2f}%)")
+                st.progress(float(p))
+
+            # E. Detail Preprocessing
+            st.markdown("---")
             with st.expander(tx["expander_title"]):
                 st.write(f"**{tx['exp_raw']}:** `{user_input}`")
                 st.write(f"**{tx['exp_clean']}:** `{cleaned_text}`")
